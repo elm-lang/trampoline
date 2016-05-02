@@ -1,7 +1,7 @@
 module Trampoline exposing
-  ( trampoline
-  , Trampoline
-  , done, continue
+  ( Trampoline
+  , done, jump
+  , evaluate
   )
 
 {-| A [trampoline](http://en.wikipedia.org/wiki/Tail-recursive_function#Through_trampolining)
@@ -28,11 +28,16 @@ type Trampoline a
     | Jump (() -> Trampoline a)
 
 
+{-| When you do not want a computation to go through the trampoline.
+-}
 done : a -> Trampoline a
 done =
   Done
 
 
+{-| When you want a computation to be delayed so that it is handled by the
+trampoline.
+-}
 jump : (() -> Trampoline a) -> Trampoline a
 jump =
   Jump
