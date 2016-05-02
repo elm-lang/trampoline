@@ -6,7 +6,9 @@
     "source-directories": [
         "src"
     ],
-    "exposed-modules": [],
+    "exposed-modules": [
+        "Trampoline"
+    ],
     "dependencies": {
         "elm-lang/core": "4.0.0 <= v < 5.0.0"
     },
